@@ -386,7 +386,3 @@ os.rename("/content/01_data_preprocessing.txt",
 
 save_code_to_repo(f"/content/{NOTEBOOK_NAME}.py")
 push_to_github("Data loading and preprocessing are complete.")
-
-!jupyter nbconvert --to script \
-  "/content/drive/MyDrive/Colab Notebooks/01_data_preprocessing.ipynb" \
-  --output-dir "/content/"
