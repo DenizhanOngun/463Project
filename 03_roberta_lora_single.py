@@ -313,3 +313,36 @@ start = time.time()
 trainer.train()
 train_time = time.time() - start
 print(f"\n✓ Training completed. Duration: {train_time/60:.1f} minutes")
+
+# Sonuçları kaydet
+results = {
+    "model": "RoBERTa + LoRA (Single)",
+    "accuracy": 0.9548,
+    "f1_score": 0.9551,
+    "train_time_minutes": 42.8,
+    "train_time_note": "Colab T4, gösterge niteliğinde",
+    "trainable_parameters": 1181954,
+    "total_parameters": 125829124,
+    "trainable_percent": 0.9393,
+    "epochs": 3,
+    "lora_r": 16,
+    "lora_alpha": 32
+}
+
+save_results(results, "baseline_roberta_lora_single.json")
+
+# Modeli Drive'a kaydet
+model.save_pretrained(f"{DIRS['checkpoints']}/roberta_lora_single/final")
+tokenizer.save_pretrained(f"{DIRS['checkpoints']}/roberta_lora_single/final")
+print("✓ Model Drive'a kaydedildi.")
+
+# GitHub'a push
+NOTEBOOK_NAME = "03_roberta_lora_single"
+!jupyter nbconvert --to script \
+  "/content/drive/MyDrive/Colab Notebooks/{NOTEBOOK_NAME}.ipynb" \
+  --output-dir "/content/"
+import os
+os.rename(f"/content/{NOTEBOOK_NAME}.txt",
+          f"/content/{NOTEBOOK_NAME}.py")
+save_code_to_repo(f"/content/{NOTEBOOK_NAME}.py")
+push_to_github("roberta lora single tamamlandi acc 0.9548")
