@@ -387,14 +387,6 @@ os.rename("/content/01_data_preprocessing.txt",
 save_code_to_repo(f"/content/{NOTEBOOK_NAME}.py")
 push_to_github("Data loading and preprocessing are complete.")
 
-# Notebook'u bul
-import subprocess
-result = subprocess.run(
-    ["find", "/content/drive/MyDrive", "-name", "01_data_preprocessing.ipynb"],
-    capture_output=True, text=True
-)
-print(result.stdout)
-
 !jupyter nbconvert --to script \
   "/content/drive/MyDrive/Colab Notebooks/01_data_preprocessing.ipynb" \
   --output-dir "/content/"
