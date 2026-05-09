@@ -426,4 +426,4 @@ os.rename(f"/content/{NOTEBOOK_NAME}.txt",
           f"/content/{NOTEBOOK_NAME}.py")
 
 save_code_to_repo(f"/content/{NOTEBOOK_NAME}.py")
-push_to_github("oof egitimi tamamlandi roberta 0.9473 deberta 0.9424")
+push_to_github("oof training completed roberta 0.9473 deberta 0.9424")
